@@ -258,6 +258,19 @@ Quick access
 Reference
 - Plugin repository: https://github.com/joaopaulolndev/filament-edit-profile
 
+## Developer Logins — dutchcodingcompany/filament-developer-logins
+
+Quick-login buttons are enabled on the Admin and App panels for local development. The list is built dynamically from the database, restricted to active records (`status = true`).
+
+- Admin panel (`app/Providers/Filament/AdminPanelProvider.php`): pulls from `App\Models\Admin`.
+- App panel (`app/Providers/Filament/AppPanelProvider.php`): pulls from `App\Models\User`.
+- Both panels are gated by `app()->environment('local')`, so the buttons never appear in staging/production.
+
+To change the column shown on the buttons, edit the `->users(...)` closure in each provider (for example, swap `pluck('email', 'name')` for `pluck('email', 'email')`).
+
+Reference
+- Plugin repository: https://github.com/DutchCodingCompany/filament-developer-logins
+
 ## Resources
 
 EditorialTheme includes support for:
